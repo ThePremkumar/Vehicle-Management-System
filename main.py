@@ -1,4 +1,5 @@
 from src.admin import Admin;
+from src.customer import CustomerPanel;
 
 def main():
     try:
@@ -7,7 +8,9 @@ def main():
         print("--------------------------------------")
 
         vehciles = {}
+        customers = {}
         admin = Admin(vehciles)
+        customer = CustomerPanel(customers, vehciles)
 
 
 
@@ -22,8 +25,9 @@ def main():
             if user_input == "3":
                 print("Exiting the Main Panel")
                 break
+# Admin Panel
             elif user_input == "1":
-                print("Entering Admin Panle")
+                print("Entering Admin Panel")
 
                 print("--------------------------------------")
                 print("Welcome to Prem Rentals")
@@ -52,8 +56,49 @@ def main():
                     else:
                         print("Invalid Input, Use only 1,2,3")
 
+# Customer Panle
             elif user_input == "2":
                 print("Entering Customer Panle")
+
+                print("--------------------------------------")
+                print("Welcome to Prem Rentals")
+                print("--------------------------------------")
+
+                while True:
+                    print("Select an Option: ")
+                    print("1. Register the user")
+                    print("2. Check available vehicles")
+                    print("3. Rent vehicle")
+                    print("4. Retrun vehicle")
+                    print("5. Exit")
+
+                    customer_choice = input("Enter your choice: ")
+
+                    if customer_choice == "1":
+                        customer_id = int(input("Enter your Id: "))
+                        name = input("Enter your name: ")
+                        age = int(input("Enter your age: "))
+
+                        customer.register_customer(customer_id, name, age)
+                    
+                    elif customer_choice == "2":
+                        customer.check_available_vehicles()
+                    elif customer_choice == "3":
+                        customer_id = int(input("Enter your Id: "))
+                        vehicle_id = input("Enter the Vehicle ID: ")
+
+                        customer.rent_vehicle(customer_id, vehicle_id)
+                    elif customer_choice == "4":
+                        customer_id = int(input("Enter your Id: "))
+                        vehicle_id = input("Enter the Vehicle ID: ")
+
+                        customer.return_vehicle(customer_id, vehicle_id)
+                    elif customer_choice == "5":
+                        print("Exiting the Admin Panel")
+                        break
+                    else:
+                        print("Invalid Input, Use only 1,2,3")
+
             else:
                 print("Invalid Input, Use only 1,2,3")
     except Exception as error:

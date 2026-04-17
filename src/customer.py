@@ -35,12 +35,25 @@ class CustomerPanel:
 
         if self.vehicles[vid]["status"] == "available":
             self.customers[cid]["rented_status"] = vid
-            self.vehicles[vid]["status"] = False
+            self.vehicles[vid]["status"] = "unavailable"
             print(f"Vehicle {vid} rented to Customer : {cid}")
+        else:
+            print("Vehicle is not available.")
 
 
-    def return_vehicle(self):
-        pass
+    def return_vehicle(self, cid, vid):
+        #vehicle is status is need to update 
+        #print it
+        if self.customers[cid]["rented_status"] != vid:
+                print("This customer did not rent this vehicle.")
+                return
+        
+        if self.vehicles[vid]["status"] == "unavailable":
+            self.customers[cid]["rented_status"] = False
+            self.vehicles[vid]["status"] = "available"
+            print(f"Vehicle {vid} returned to garage for customer id {cid}")
+        else:
+            print("Vehicle is already available; cannot return.")
 
 
 
@@ -49,7 +62,7 @@ if __name__ == "__main__":
     vehicles = {'V1001': 
                     {'id': 'V1001', 'model': 'Toyota', 'type': 'CorollaCar', 'rent': '₹1,500', 'status': 'available'}, 
                'V1002': 
-                    {'id': 'V1002', 'model': 'Toyota Fortuner', 'type': 'Car', 'rent': '₹4,500', 'status': 'available'}
+                    {'id': 'V1002', 'model': 'Toyota Fortuner', 'type': 'Car', 'rent': '₹4,500', 'status': 'unavailable'}
                 }
     customer = CustomerPanel(customers, vehicles)
 
@@ -57,4 +70,6 @@ if __name__ == "__main__":
 
     customer.check_available_vehicles()
 
-    customer.rent_vehicle(240, "V1002")
+    customer.rent_vehicle(240, "V1001")
+
+    customer.return_vehicle(240, "V1002")
