@@ -1,8 +1,15 @@
+from src.admin import Admin;
+
 def main():
     try:
         print("--------------------------------------")
         print("Welcome to Prem Rentals")
         print("--------------------------------------")
+
+        vehciles = {}
+        admin = Admin(vehciles)
+
+
 
         while True:
             print("Select an Option: ")
@@ -17,6 +24,34 @@ def main():
                 break
             elif user_input == "1":
                 print("Entering Admin Panle")
+
+                print("--------------------------------------")
+                print("Welcome to Prem Rentals")
+                print("--------------------------------------")
+
+                while True:
+                    print("Select an Option: ")
+                    print("1. Add New Vehicles")
+                    print("2. View the inventory")
+                    print("3. Exit")
+
+                    admin_choice = input("Enter your choice: ")
+
+                    if admin_choice == "1":
+                        vehicle_id = input("Enter the Vehicle ID: ") 
+                        model = input("Enter the Model: ") 
+                        type = input("Enter the type vehicle bike/car: ") 
+                        rent = input("Enter the rent per day: ") 
+                        
+                        admin.add_new_vehicles(vehicle_id, model, type, rent)
+                    elif admin_choice == "2":
+                        admin.view_inventory()
+                    elif admin_choice == "3":
+                        print("Exiting the Admin Panel")
+                        break
+                    else:
+                        print("Invalid Input, Use only 1,2,3")
+
             elif user_input == "2":
                 print("Entering Customer Panle")
             else:

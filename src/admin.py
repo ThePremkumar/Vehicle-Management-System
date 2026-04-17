@@ -32,10 +32,10 @@ class Admin:
 
         #return self.vehicles
 
+if __name__ == '__main__':
+    vehicles = {}
 
-vehicles = {}
+    prem_admin = Admin(vehicles)
+    prem_admin.add_new_vehicles("V-101", "Toyota", "Corolla" "Sedan", "₹1,500")
 
-prem_admin = Admin(vehicles)
-prem_admin.add_new_vehicles("V-101", "Toyota", "Corolla" "Sedan", "₹1,500")
-
-prem_admin.view_inventory()
+    prem_admin.view_inventory()
