@@ -9,24 +9,33 @@ class Admin:
 
 
     def add_new_vehicles(self, vehicle_id, model, type, rent):
-        self.vehicles[vehicle_id] = {
-            "id": vehicle_id,
-            "model": model,
-            "type": type,
-            "rent": rent,
-            "status": "available"
-        }
-        print(f"Added a Vehicle Successfully {vehicle_id}")
-
+        try:
+            self.vehicles[vehicle_id] = {
+                "id": vehicle_id,
+                "model": model,
+                "type": type,
+                "rent": rent,
+                "status": "available"
+            }
+            print(f"Added a Vehicle Successfully {vehicle_id}")
+        except Exception as error:
+            print(error)
 
 
     def view_inventory(self):
-        for value in self.vehicles.values():
-            message = f"Id: {value["id"]} | rent: {value["rent"]} | model: {value["model"]}"
-            print(value)
-
+        try:
+            for value in self.vehicles.values():
+                message = f"Id: {value["id"]} | rent: {value["rent"]} | model: {value["model"]}"
+                print(message)
+        except Exception as error:
+            print(error)
 
         #return self.vehicles
 
 
 vehicles = {}
+
+prem_admin = Admin(vehicles)
+prem_admin.add_new_vehicles("V-101", "Toyota", "Corolla" "Sedan", "₹1,500")
+
+prem_admin.view_inventory()
