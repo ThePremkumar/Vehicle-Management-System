@@ -39,10 +39,10 @@ def main():
 
                     if admin_choice == "1":
                         vehicle_id = input("Enter the Vehicle ID: ") 
-                        model = input("Enter the Model: ") 
+                        model = input("Enter the Model of the vehicle: ") 
                         type = input("Enter the type vehicle bike/car: ") 
-                        rent = input("Enter the rent per day: ") 
-                        
+                        rent = int(input("Enter the rent per day: ")) 
+
                         admin.add_new_vehicles(vehicle_id, model, type, rent)
                     elif admin_choice == "2":
                         admin.view_inventory()

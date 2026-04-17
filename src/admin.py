@@ -36,6 +36,8 @@ if __name__ == '__main__':
     vehicles = {}
 
     prem_admin = Admin(vehicles)
-    prem_admin.add_new_vehicles("V-101", "Toyota", "Corolla" "Sedan", "₹1,500")
+    prem_admin.add_new_vehicles("V-101", "Toyota", "Corolla" "Car", "₹1,500")
+    prem_admin.add_new_vehicles("V1002", "Toyota Fortuner", "Car", "₹4,500")
 
+    print(vehicles)
     prem_admin.view_inventory()
